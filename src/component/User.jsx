@@ -4,9 +4,9 @@ import avatar from "../navBarImages/avatar.png"
 function User() {
   return (
     <div id='user'>
-        <img src={avatar}/>
-        <span>Behzad</span>
-        <IoIosArrowDown/>
+        <img alt="avatar" src={avatar} id='avatar'/>
+        <span id='user-name'>Behzad</span>
+        <IoIosArrowDown id='arrow-down'/>
     </div>
   )
 }
