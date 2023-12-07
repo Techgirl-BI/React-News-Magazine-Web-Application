@@ -1,0 +1,45 @@
+*{
+    margin: 0px;
+    box-sizing: border-box;
+    padding: 0px;
+}
+
+#header{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+#logo-link{
+    text-decoration: none;
+    color: orangered;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.nav-list{
+    color: green;
+    font-size: 1.2rem;
+    list-style-type: none;
+}
+.link{
+    color: green;
+    text-decoration: none;
+
+}
+.nav-items{
+    display: flex;
+}
+.nav-logo{
+    list-style-type: none;
+}
+#nav-bar{
+    width: 40%;
+}
+#search-bar{
+    width: 30%;
+}
+#user{
+    width: 20%;
+}
+#bookmark{
+    width: 10%;
+}

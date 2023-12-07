@@ -1,15 +1,10 @@
-// import { Fragment } from 'react'
-import {BrowserRouter as Router} from "react-router-dom"
-import Navbar from './component/Navbar';
-import ContactUsPage from "./pages/contactUsPage";
-
-
-
+import Header from './component/Header';
+import Routecomp from './component/Routecomp';
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-      <ContactUsPage/>
+      <Routecomp/>
+      <Header/> 
     </div>
   );
 }

@@ -5,17 +5,17 @@ import girl from "../navBarImages/girlish.png";
 import music from "../navBarImages/music.png";
 import sport from "../navBarImages/sport.png";
 import technology from "../navBarImages/technology.png";
+import { Link } from "react-router-dom";
+// import Homepage from "../pages/homepage";
+// import CoyLogo from "./CoyLogo";
 
 function Navbar() {
-  const [categoriesDropDown, setCategoriesDropDown] = useState(false);
+  const [categoriesDropDown, setCategoriesDropDown] = useState(null);
+
   const handleDropdownToggle = (itemId) => {
-    if (itemId === categoriesDropDown) {
-      setCategoriesDropDown(null); // Close the dropdown if it's already open
-    } else {
-      setCategoriesDropDown(itemId);
-    }
+    setCategoriesDropDown(categoriesDropDown === itemId ? null : itemId);
   };
-  
+
   const navigationItems = [
     {
       id: 1,
@@ -124,28 +124,43 @@ function Navbar() {
         link: "/aboutus"
     }
   ];
+
+
+
   return (
-    <nav>
-      <ul>
-        {navigationItems.map(item => <li key={item.id}>
-            {item.hasDropdown? (
-                <>
-               <span onClick={() => handleDropdownToggle(item.id)}>{item.label}</span>
+    <nav id="nav-bar">
+      <ul className="nav-items">
+        <li className="nav-logo"><Link to={'/'} id="logo-link">MEGA.news</Link></li>
+        {navigationItems.map((item) => (
+          <li key={item.id} className="nav-list">
+            {item.hasDropdown ? (
+              <>
+                <span onClick={() => handleDropdownToggle(item.id)}  >
+                  {item.label}
+                </span>
                 {categoriesDropDown === item.id && (
-                    <ul>
-                        {item.dropdownItems.map(dropdownItem => (
-                            <li key={dropdownItem.id}>
-                                <a href={dropdownItem.link}>{dropdownItem.label}</a>
-                            </li>
-                        ))}
-                    </ul>
+                  <div>
+                    {item.dropdownItems.map((dropdownItem) => (
+                      <div key={dropdownItem.id}>
+                        <p><Link to={dropdownItem.link}>{dropdownItem.label}</Link></p>
+                        {dropdownItem.items && ( // Corrected property name
+                          <>
+                            <img src={dropdownItem.img} alt={dropdownItem.label} />
+                            {dropdownItem.items.map((item) => (
+                              <p key={item}>{item}</p>
+                            ))}
+                          </>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 )}
-                </>
+              </>
             ) : (
-               <a href={item.link}>{item.label}</a> 
+             <p><Link to={item.link} className="nav-list link">{item.label}</Link></p>
             )}
-        </li>
-        )}
+          </li>
+        ))}
       </ul>
     </nav>
   );
